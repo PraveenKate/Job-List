@@ -6,7 +6,7 @@ function AddPost() {
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
-        Axios.post('https://joblistproject2-backend.onrender.com/post', post)
+        Axios.post('https://job-list-backend.onrender.com/post', post)
             .then((response) => {
                 if (response.data === 'yes') {
                     alert('Successfully Added');

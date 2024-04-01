@@ -5,7 +5,8 @@ const cors = require("cors");
 require("dotenv").config();
 
 const corsOptions = {
-    origin: "https://job-list-eef7f.web.app" // frontend URI (ReactJS)
+    // origin: "https://job-list-eef7f.web.app" // frontend URI (ReactJS)
+    origin: "https://job-list-frontend.onrender.com" // frontend URI (ReactJS)
 }
 app.use(express.json());
 app.use(cors(corsOptions));

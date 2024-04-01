@@ -11,7 +11,7 @@ function Jobs() {
     }, []);
 
     const fetchJobs = () => {
-        Axios.get('https://joblistproject2-backend.onrender.com/posts')
+        Axios.get('https://job-list-backend.onrender.com/posts')
             .then((response) => {
                 setJobs(response.data);
             })

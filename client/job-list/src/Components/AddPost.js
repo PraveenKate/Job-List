@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import Axios from 'axios';
-
+import Home from './Home';
 function AddPost() {
     const [post, setPost] = useState({ profile: '', desc: '', exp: null, techs: [] });
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
-        Axios.post('https://job-list-backend.onrender.com/post', post)
+        // Axios.post('https://job-list-backend.onrender.com/post', post)
+        Axios.post('https://backend-job-list.onrender.com/post', post)
             .then((response) => {
                 if (response.data === 'yes') {
                     alert('Successfully Added');
@@ -29,7 +30,9 @@ function AddPost() {
 
     return (
         <div>
-            <form onSubmit={onSubmitHandler}>
+            <Home/>
+            <form onSubmit={onSubmitHandler} id="fm">
+            <h3>Add Job Post</h3>
                 <div>
                     <label>Profile :</label>
                     <input type="text" name="profile" value={post.profile} onChange={handleInputChange} />

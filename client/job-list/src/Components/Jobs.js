@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Axios from 'axios';
 import '../CSS/Jobs.css';
+import Home from './Home';
 
 function Jobs() {
     const [jobs, setJobs] = useState([]);
@@ -11,7 +12,8 @@ function Jobs() {
     }, []);
 
     const fetchJobs = () => {
-        Axios.get('https://job-list-backend.onrender.com/posts')
+        // Axios.get('https://job-list-backend.onrender.com/posts')
+        Axios.get('https://backend-job-list.onrender.com/posts')
             .then((response) => {
                 setJobs(response.data);
             })
@@ -25,7 +27,8 @@ function Jobs() {
         setSearch(searchText);
 
         // Fetch jobs whenever search text changes
-        Axios.post('https://joblistproject2-backend.onrender.com/posts', { text: searchText })
+        // Axios.post('https://joblistproject2-backend.onrender.com/posts', { text: searchText })
+        Axios.post('https://backend-job-list.onrender.com/posts', { text: searchText })
             .then((response) => {
                 setJobs(response.data);
             })
@@ -35,26 +38,27 @@ function Jobs() {
     };
 
     return (
-        <div id="body">
-            <input type="text" value={search} onChange={onSearchChange} placeholder="Search jobs based on technologies..." />
+        <div >
+            <Home/>
+            <input type="text" id="search" value={search} onChange={onSearchChange} placeholder="Search jobs based on technologies..." />
             <div id="cn">
                 {jobs.map((job, index) => (
                     <div key={index} id="container">
                         <div>
                             <h4>Profile :</h4>
-                            {job.profile}
+                            <p>{job.profile}</p>
                         </div>
                         <div>
                             <h4>Description :</h4>
-                            {job.desc}
+                            <p>{job.desc}</p>
                         </div>
                         <div>
                             <h4>Experience :</h4>
-                            {job.exp}
+                            <p>{job.exp}</p>
                         </div>
                         <div>
                             <h4>Technologies :</h4>
-                            {job.techs ? job.techs.join(', ') : 'No technologies specified'}
+                            <p>{job.techs ? job.techs.join(', ') : 'No technologies specified'}</p>
                         </div>
                     </div>
                 ))}
